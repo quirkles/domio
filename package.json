@@ -23,7 +23,10 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "ramda": "^0.26.1",
+    "rxjs": "^6.5.3",
+    "sqlite3": "^4.1.0"
   },
   "nodemonConfig": {
     "ignore": [
@@ -31,7 +34,9 @@
       ".git",
       "node_modules"
     ],
-    "watch": ["src"],
+    "watch": [
+      "src"
+    ],
     "exec": "npm start",
     "ext": "ts"
   }
