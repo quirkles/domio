@@ -1,0 +1,38 @@
+{
+  "name": "domio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node -r ts-node/register ./src/index.ts",
+    "dev": "nodemon",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "@types/node": "^12.12.5",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": ["src"],
+    "exec": "npm start",
+    "ext": "ts"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include" :[
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    ".git",
+    "node_modules",
+    "**/*-spec.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
+}
