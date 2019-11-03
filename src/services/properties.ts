@@ -1,5 +1,9 @@
 import { get } from "https";
-import { from, Observable, of } from "rxjs";
+import {
+  from,
+  Observable,
+  of,
+} from "rxjs";
 import {switchMap} from "rxjs/operators";
 
 const API_URL = "https://interview.domio.io/properties/";

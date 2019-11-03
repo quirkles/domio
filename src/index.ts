@@ -4,10 +4,16 @@ import {
   pipe,
   prop,
 } from "ramda";
+import {Interface} from "readline";
 import { timer } from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
+import {
+  flatMap,
+  map,
+  tap,
+} from "rxjs/operators";
 import * as sqlite from "sqlite3";
 
+import doAlertIfRequired from "./alerts";
 import { propertiesService } from "./services";
 
 const sqlite3 = sqlite.verbose();
@@ -29,7 +35,15 @@ db.serialize(() => {
 
 const pollingIntervalMs = 5000;
 
-const getPropertyDataFromResponse = pipe(
+export interface IProperty {
+  dynamicDisplayPrice: number;
+  id: string;
+  type: string;
+  basePrice: number;
+  dateTimeOfPrice: number;
+}
+
+export const getPropertyDataFromResponse = pipe(
   prop("properties"),
   rMap(
     pipe(
@@ -52,11 +66,9 @@ const savePropertyData = (properties) => {
 
 timer(0, pollingIntervalMs)
   .pipe(
-    switchMap(() => propertiesService.getProperties()),
+    flatMap(() => propertiesService.getProperties()),
     map(getPropertyDataFromResponse),
-    tap(doAlertsIfRequired),
+    tap(doAlertIfRequired),
     tap(savePropertyData),
-    // tslint:disable-next-line:no-console
-    tap(console.log),
   )
   .subscribe();

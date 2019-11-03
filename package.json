@@ -5,8 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node -r ts-node/register ./src/index.ts",
-    "dev": "nodemon",
-    "build": "tsc"
+    "dev": "npm run clearDb && nodemon",
+    "build": "tsc",
+    "clearDb": "rm -f db/domio.db && touch db/domio.db"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,11 @@
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.21",
     "@types/node": "^12.12.5",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
@@ -24,6 +29,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "nodemailer": "^6.3.1",
     "ramda": "^0.26.1",
     "rxjs": "^6.5.3",
     "sqlite3": "^4.1.0"
